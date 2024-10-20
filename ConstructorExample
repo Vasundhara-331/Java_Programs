@@ -1,0 +1,52 @@
+import java.util.*;
+
+class Employee {
+    String name;
+    int id; // Use 'id' instead of 'ID' to be consistent
+
+    public void displayDetails() {
+        System.out.println("Name is: " + name);
+        System.out.println("ID is: " + id);
+    }
+
+    public void setName(String name) { // Specify type
+        this.name = name;
+    }
+
+    public void setId(int id) { // Specify type
+        this.id = id;
+    }
+}
+
+class Manager extends Employee {
+    String department;
+
+    @Override
+    public void displayDetails() {
+        super.displayDetails();
+        System.out.println("Department is: " + department);
+    }
+
+    public void setDepartment(String department) { // Specify type
+        this.department = department;
+    }
+}
+
+public class Main {
+    public static void main(String args[]) {
+        Employee e = new Employee();
+        e.setName("Amy");
+        e.setId(100);
+
+        Manager m = new Manager();
+        m.setName("John"); // Set name for manager
+        m.setId(101);      // Set ID for manager
+        m.setDepartment("HR"); // Set department for manager
+
+        System.out.println("Employee Details:");
+        e.displayDetails();
+
+        System.out.println("Manager Details:");
+        m.displayDetails();
+    }
+}
