@@ -1,0 +1,25 @@
+import java.util.*;
+import java.io.*;
+public class FileHandler {
+    public static void main(String[] args) {
+        String filepath = "Example.txt";
+        try(FileWriter w = new FileWriter(filepath)) {
+            w.write("Welcome to Java");
+            w.write("This is a test file");
+            System.out.println("File written successfully!");
+        }
+        catch(IOException e) {
+            System.out.println("Error writing to file"+e.getMessage());
+        }
+        try(FileReader r = new FileReader(filepath)) {
+            int ch;
+            while((ch=r.read())!= -1) {
+                System.out.println((char)ch);
+            }
+            System.out.println("File read successfully!");
+        }
+        catch(IOException e) {
+            System.out.println("Error reading from file"+e.getMessage());
+        }
+    }
+}
