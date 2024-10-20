@@ -1,0 +1,43 @@
+import java.io.*;
+
+public class FileExp
+{
+  public static void main(String[] args)
+  {
+    String filenew = "FileInformation.txt";
+    File f = new File(filenew);
+    try 
+    {  
+      displayFileInfo(f);
+    }
+    catch(FileNotFoundException e)
+    {
+      System.out.println("File not found!: "+ e.getMessage());
+    }
+    catch(IOException e)
+    {
+      System.out.println("Cannot access file! "+ e.getMessage());
+    }
+  }
+  
+  public static void displayFileInfo(File f) throws FileNotFoundException, IOException
+  {
+    if(f.exists())
+    {
+      System.out.println("Displaying File Details:");
+      System.out.println("File Name: "+f.getName());
+      System.out.println("File Path: "+f.getAbsolutePath());
+      System.out.println("File Size: "+f.length() + " bytes");
+      System.out.println("File List: "+f.list());
+      System.out.println("File Exists: "+f.exists());
+      System.out.println("File Read : "+f.canRead());
+      System.out.println("File Write : "+f.canWrite());
+      System.out.println("File Hidden?: "+f.isHidden());
+    }
+    
+    else
+    {
+      throw new FileNotFoundException("File Not Found!");
+    }
+  }
+}
