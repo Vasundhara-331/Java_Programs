@@ -1,0 +1,58 @@
+import java.util.*;
+import java.io.*;
+class NumberGenerator extends Thread {
+    static int num;
+    public void run() {
+        Random r = new Random();
+        while(true) {
+            num = r.nextInt(10);
+            System.out.println("Num is:"+num);
+            try {
+                Thread.sleep(500);
+            }
+            catch(InterruptedException e) {
+                System.out.println("Error"+e.getMessage());
+            }
+        }
+    }
+}
+class Square extends Thread {
+    public void run() {
+        while(true) {
+            if (NumberGenerator.num % 2 == 0) {
+                System.out.println("Square is:"+NumberGenerator.num*NumberGenerator.num);
+            }
+            try{
+                Thread.sleep(1000);
+            }
+            catch(InterruptedException e) {
+                System.out.println("Exception caught!"+e.getMessage());
+            }
+        }
+    }
+}
+class Cube extends Thread {
+    public void run() {
+        while(true) {
+            if (NumberGenerator.num % 2 != 0) {
+                System.out.println("Cube is:"+NumberGenerator.num*NumberGenerator.num*NumberGenerator.num);
+            }
+            try{
+                Thread.sleep(1000);
+            }
+            catch(InterruptedException e) {
+                System.out.println("Exception caught!"+e.getMessage());
+            }
+        }
+    }
+}
+public class Threads {
+    public static void main(String[] args) {
+        NumberGenerator n = new NumberGenerator();
+        Square s = new Square();
+        Cube c = new Cube();
+        n.start();
+        s.start();
+        c.start();
+    }
+}
