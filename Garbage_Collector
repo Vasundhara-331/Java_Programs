@@ -1,0 +1,17 @@
+class Garbage
+{
+ protected void finalize()
+  {
+    System.out.println("Object garbage collected succesfully!");
+  }
+  
+  public static void main(String args[])
+  {
+    Garbage g = new Garbage();
+    //s = g.finalize();
+    g = null;
+    System.gc();
+    System.out.println("End of operation");
+  }
+}
+
