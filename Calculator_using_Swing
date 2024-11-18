@@ -1,0 +1,102 @@
+// To implement basic arithmetic operations with a calculator, using Swing.
+
+import javax.swing.*;
+import java.awt.event.*;
+  class Calculators implements ActionListener { 
+  JButton add,sub,mul,div,clear,equal;
+  JTextField input,output,result;
+  String op;
+  double n1,n2,r;
+  
+  Calculators() {
+    JFrame f = new JFrame();
+    f.setLayout(null);
+    f.setSize(500,300);
+    
+    input = new JTextField();
+    input.setBounds(200,200,80,25);
+    f.add(input);
+    
+    output = new JTextField();
+    output.setBounds(200,260,80,25);
+    f.add(output);
+    
+    result = new JTextField();
+    result.setBounds(200,320,80,25);
+    f.add(result);
+    
+    add = new JButton("+");
+    add.setBounds(200,380,100,25);
+    add.addActionListener(this);
+    f.add(add);
+    
+    sub = new JButton("-");
+    sub.setBounds(200,440,100,25);
+    sub.addActionListener(this);
+    f.add(sub);
+    
+    mul = new JButton("*");
+    mul.setBounds(200,500,100,25);
+    mul.addActionListener(this);
+    f.add(mul);
+    
+    div = new JButton("/");
+    div.setBounds(200,560,100,25);
+    div.addActionListener(this);
+    f.add(div);
+    
+    equal = new JButton("=");
+    equal.setBounds(200,60,100,25);
+    equal.addActionListener(this);
+    f.add(equal);
+    
+    f.setVisible(true);
+  }
+  
+  public void actionPerformed(ActionEvent e) {
+    n1 = Double.parseDouble(String.valueOf(input.getText()));
+    n2 = Double.parseDouble(String.valueOf(output.getText()));
+    
+    if(e.getSource() == add) {
+      op = "+";
+    }
+    
+    else if(e.getSource() == sub) {
+      op = "-";
+    }
+    
+    else if(e.getSource() == mul) {
+      op = "*";
+    }
+    
+    else if(e.getSource() == div) {
+      op = "/";
+    }
+    
+    if(e.getSource() == equal) { 
+      switch(op) {
+       case "+":
+      r = n1 + n2;
+      break;
+      case "-" :
+      r = n1 - n2;
+      break;
+      case "*" :
+      r =  n1 * n2;
+      break;
+      case "/" : 
+      try {
+        r = n1 / n2;
+      }
+      catch(Exception ex) {
+        System.out.println("ERROR!");
+      }
+    }
+    result.setText(String.valueOf(r));
+  }
+}
+public static void main(String[] args) {
+  new Calculators();
+}
+}
+    
