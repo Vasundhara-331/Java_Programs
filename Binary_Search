@@ -1,0 +1,56 @@
+import java.util.*;
+public class BinSearch 
+{
+  public static int search(int a[],int e,int l,int h)
+  {
+    int flag = 0,mid;
+    while (l <= h)
+    {
+      mid = (l+h) / 2;
+      if (a[mid] == e)
+      {
+        System.out.println("Element found at: "+(mid+1));
+        return 1;
+      }
+      else if (a[mid] > e)
+      {
+        h = mid-1;
+        search(a,e,l,h);
+      }
+      else if (a[mid] < e)
+      {
+        l = mid+1;
+        search(a,e,l,h);
+      }
+    }
+    return -1;
+  }
+  public static void main(String[] args)
+  {
+    int a[] = new int[100];
+    int i,l=0, h;
+    Scanner s = new Scanner(System.in);
+    System.out.print("Enter the size of the array: ");
+    int n = s.nextInt();
+    System.out.println("Enter the array elements:");
+    for(i=0;i<n;i++)
+    {
+      System.out.print("a["+i+"]: ");
+      a[i] = s.nextInt();
+    }
+    System.out.print("\nDisplaying array elements:\n");
+    for(i=0;i<n;i++)
+    {
+      System.out.print(a[i]+" ");
+    }
+    BinSearch b = new BinSearch();
+    System.out.println("\nStarting Binary Search");
+    System.out.print("Enter the search element: ");
+    int e = s.nextInt();
+    int result = search(a,e,0,n-1);
+     if (result != 1)
+    {
+      System.out.println("Element not found!");
+    }
+  } 
+}
