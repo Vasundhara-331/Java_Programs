@@ -1,0 +1,67 @@
+import javax.swing.*;
+import java.awt.event.*;
+
+public class LoginForm implements ActionListener {
+  private JFrame frame;
+  private JLabel usernameLabel, passwordLabel, messageLabel;
+  private JTextField usernameField;
+  private JPasswordField passwordField;
+  private JButton loginButton;
+  
+  LoginForm() {
+    frame = new JFrame("Login Form");
+    frame.setSize(300,200);
+    frame.setLayout(null);
+    
+    usernameLabel = new JLabel("Username: ");
+    usernameLabel.setBounds(30,30,80,25);
+    frame.add(usernameLabel);
+    
+    passwordLabel = new JLabel("Password: ");
+    passwordLabel.setBounds(30,60,80,25);
+    frame.add(passwordLabel);
+    
+    usernameField = new JTextField();
+    usernameField.setBounds(120,30,100,25);
+    frame.add(usernameField);
+    
+    passwordField = new JPasswordField();
+    passwordField.setBounds(120,60,100,25);
+    frame.add(passwordField);
+    
+    loginButton = new JButton("Login ");
+    loginButton.setBounds(70,100,100,20);
+    loginButton.addActionListener(this);
+    frame.add(loginButton);
+    
+    messageLabel = new JLabel("Confirmation Message: ");
+    messageLabel.setBounds(30,140,200,28);
+    frame.add(messageLabel);
+    
+    /*frame.add(usernameLabel);
+    frame.add(usernameField);
+    frame.add(passwordLabel);
+    frame.add(passwordField);
+    frame.add(loginButton);*/
+    
+    frame.setVisible(true);
+  }
+    
+  public void actionPerformed(ActionEvent e) {
+    String username = usernameField.getText();
+    String password = new String(passwordField.getPassword());
+    if(username.equals("admin") && password.equals("pass123")) {
+      JOptionPane.showMessageDialog(frame, "Login Successful!");
+    }
+    else if(username.isEmpty() || password.isEmpty()) {
+       JOptionPane.showMessageDialog(frame, "Invalid USername or Password!");
+     }
+     else {
+       JOptionPane.showMessageDialog(frame, "Invalid Login!");
+    }
+  }
+
+public static void main(String[] args) {
+      new LoginForm();
+    }
+}
