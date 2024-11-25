@@ -1,0 +1,93 @@
+import java.util.*;
+class Employee
+{
+  String name, address;
+  int age;
+  String phonenumber;
+  double salary;
+  
+  public Employee(String name,int age,String phonenumber,String address,double salary)
+  {
+    this.name = name;
+    this.age = age;
+    this.phonenumber = phonenumber;
+    this.address = address;
+    this.salary = salary;
+  }
+  
+  void printSalary()
+  {
+    System.out.println("Salary is:" + salary);
+  }
+}
+
+class Officer extends Employee
+{
+  String specialization;
+  
+  public Officer(String name,int age,String phonenumber,String address,double salary,String specialization)
+  {
+    super(name,age,phonenumber,address,salary);
+    this.specialization = specialization;
+  }
+}
+  
+class Manager extends Employee
+{
+  String department;
+  
+  public Manager(String name,int age,String phonenumber,String address,double salary,String department)
+  {
+    super(name,age,phonenumber,address,salary);
+    this.department = department;
+  }
+}
+
+public class Inheritance
+{
+  public static void main(String args[])
+  {
+    Officer o = new Officer("Amy",33,"9989889566","Orchid Gardens,New York",25000.00,"IT");
+    Manager m = new Manager("Richard",45,"8890122745","WoodWill Villa, New Jersey",30000.00,"Advertising");
+    
+    Scanner s = new Scanner(System.in);
+    
+    System.out.println("Displaying Officer Details:");
+    System.out.println("Officer Name: "+o.name);
+    System.out.println("Officer Age : "+o.age);
+    System.out.println("Officer Phone Number: "+o.phonenumber);
+    System.out.println("Officer Address: "+o.address);
+    System.out.println("Officer Salary: "+o.salary);
+    System.out.println("Officer Specialization: "+o.specialization);
+    
+    System.out.println("\n");
+    
+    System.out.println("Displaying Manager Details:");
+    System.out.println("Manager Name: "+m.name);
+    System.out.println("Manager Age : "+m.age);
+    System.out.println("Manager Phone Number: "+m.phonenumber);
+    System.out.println("Manager Address: "+m.address);
+    System.out.println("Manager Salary: "+m.salary);
+    System.out.println("Manager Department: "+m.department);
+    
+  }
+}
+   
+/* OUTPUT:
+Displaying Officer Details:
+Officer Name: Amy
+Officer Age : 33
+Officer Phone Number: 9989889566
+Officer Address: Orchid Gardens,New York
+Officer Salary: 25000.0
+Officer Specialization: IT
+
+
+Displaying Manager Details:
+Manager Name: Richard
+Manager Age : 45
+Manager Phone Number: 8890122745
+Manager Address: WoodWill Villa, New Jersey
+Manager Salary: 30000.0
+Manager Department: Advertising
+*/ 
